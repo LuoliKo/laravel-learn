@@ -16,3 +16,11 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('users/{user}', function (App\User $user) {
+    dd($user);
+});
+
+$router->get('user2/{user_model_item}', function (App\User $user) {
+    dd($user);
+});
