@@ -83,3 +83,17 @@ Route::prefix('admin')->group(function () {
         return 'prefix route';
     });
 });
+
+Route::get('middleware', function () {
+    return 'success';
+})->middleware('token', \App\Http\Middleware\AfterHandler::class);
+
+Route::group(['middleware' => ['blog']], function () {
+    Route::get('/welcome2', function () {
+        return view('welcome', ['name' => 'LuoliKo']);
+    });
+
+    Route::view('/view', 'welcome', ['name' => 'LuoliKo & Ashida Mana']);
+});
+
+Route::get('info', 'InfoController@index');
