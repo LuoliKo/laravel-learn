@@ -109,3 +109,9 @@ Route::get('form-without-csrf-token', function () {
 Route::get('form-with-csrf-token', function () {
     return '<form method="POST" action="/csrf-post">' . csrf_field() . '<button type="submit">提交</button></form>';
 });
+
+Route::get('show', 'UserController@show');
+
+Route::get('profilebycontroller/{id}', 'ShowProfile');
+
+Route::resource('article', 'ArticleController');
