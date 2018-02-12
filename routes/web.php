@@ -115,3 +115,12 @@ Route::get('show', 'UserController@show');
 Route::get('profilebycontroller/{id}', 'ShowProfile');
 
 Route::resource('article', 'ArticleController');
+
+
+Route::prefix('request')->group(function () {
+    Route::get('test1', 'RequestController@test1');
+    Route::get('test2/{name}', 'RequestController@test2');
+    Route::get('test3', 'RequestController@test3');
+    Route::any('test4', 'RequestController@test4');
+    Route::any('test5', 'RequestController@test5');
+});
