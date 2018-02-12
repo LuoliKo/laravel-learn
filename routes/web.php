@@ -97,3 +97,15 @@ Route::group(['middleware' => ['blog']], function () {
 });
 
 Route::get('info', 'InfoController@index');
+
+Route::post('csrf-post', function () {
+    return view('welcome', ['name' => 'Hello LuoliKo']);
+});
+
+Route::get('form-without-csrf-token', function () {
+    return '<form method="POST" action="/csrf-post"><button type="submit">提交</button></form>';
+});
+
+Route::get('form-with-csrf-token', function () {
+    return '<form method="POST" action="/csrf-post">' . csrf_field() . '<button type="submit">提交</button></form>';
+});
